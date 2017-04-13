@@ -16,7 +16,10 @@ if ($ann) {
 
 	$filename = dirname(__FILE__) . "/xor.data";
 	if (fann_train_on_file($ann, $filename, $max_epochs, $epochs_between_reports, $desired_error))
-		fann_save($ann, dirname(__FILE__) . "/xor_float.net");
+		print('xor trained.<br>' . PHP_EOL);
+
+	if (fann_save($ann, dirname(__FILE__) . "/xor_float.net"))
+		print('xor_float.net saved.<br><a href="simple_test.php">Test</a>' . PHP_EOL);
 
 	fann_destroy($ann);
 }
